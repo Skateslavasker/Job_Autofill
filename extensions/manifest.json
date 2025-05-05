@@ -1,0 +1,24 @@
+{
+    "manifest_version": 3,
+    "name": "Job Application Autofill",
+    "version": "1.0",
+    "description": "Automatically fills out job application forms with pre-defined data.",
+    "permissions" : [
+        "scripting",
+        "activeTab"
+    ],
+    "icons" : {
+        "24": "images/r24.png",
+        "32": "images/r32.png",
+        "128": "images/r128.png"
+    },
+    "action" : {
+        "default_popup" : "popup.html"
+    },
+    "content_scripts": [
+        {
+            "matches": ["*://*.myworkdayjobs.com/*"],
+            "js": ["src/content.js"]  
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "compilerOptions": { 
+        "target": "es6",
+        "module": "esnext",
+        "outDir": "extensions/src",
+        "strict": true,
+        "esModuleInterop": true,
+    },
+    "include": ["extensions/content/popup.ts", "extensions/content/content.ts"]
+}

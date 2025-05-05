@@ -1,8 +1,8 @@
 from flask import Flask
 from flask_cors import CORS
-from config import Config
-from models import db 
-from routes.profile_route import profile_bp
+from backend.config import Config
+from backend.models import db 
+from backend.routes.profile_route import profile_bp
 
 
 app = Flask(__name__)
