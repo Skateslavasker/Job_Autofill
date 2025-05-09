@@ -85,12 +85,12 @@ async function fetchProfile(): Promise<Record<string, any>> {
       
           const file = new File([blob], filename, { type: blob.type });
       
-          // Use a DataTransfer to simulate file selection
+         
           const dataTransfer = new DataTransfer();
           dataTransfer.items.add(file);
           input.files = dataTransfer.files;
       
-          // Trigger change event so Workday starts processing it
+          
           input.dispatchEvent(new Event("change", { bubbles: true }));
           console.log(`✅ Uploaded resume "${filename}" from ${fileUrl}`);
         } catch (err) {
@@ -122,7 +122,7 @@ async function fetchProfile(): Promise<Record<string, any>> {
             s?.toLowerCase().replace(/[^\w\s]/g, "").trim();
 
   for (const button of allButtons) {
-    // Step 1: Walk upward and find question text block
+   
     let container: HTMLElement | null = button as HTMLElement;
     let depth = 0;
     let matched = false;
@@ -256,7 +256,7 @@ function autofillTextareaByLabel(labelText: string, value: string) {
         autofillDropdownByLabel("hear about", profile.how_heard);
 
            
-        // First Name
+       
         autofillField(profile.first_name || "", [
             'input[aria-label*="First Name"]',
             'input[placeholder*="First Name"]',
@@ -265,7 +265,7 @@ function autofillTextareaByLabel(labelText: string, value: string) {
             'input[placeholder*="Given Name"]',
             'input[name*="given"]'
         ]);
-        // Last Name
+       
         autofillField(profile.last_name || "Mudavath", [
             'input[aria-label*="Last Name"]',
             'input[placeholder*="Last Name"]',
@@ -278,7 +278,7 @@ function autofillTextareaByLabel(labelText: string, value: string) {
             'input[name*="family"]'
         ]);
 
-        // Address Line 1
+       
         autofillField(profile.address_line1 || "", [
             'input[aria-label*="Address Line 1"]',
             'input[placeholder*="Address Line 1"]',
@@ -291,21 +291,21 @@ function autofillTextareaByLabel(labelText: string, value: string) {
             'input[placeholder*="State"]',
             'input[name*="state"]'
         ]);
-        // City
+       
         autofillField(profile.city || "", [
             'input[aria-label*="City"]',
             'input[placeholder*="City"]',
             'input[name*="city"]'
         ]);
         
-        // Postal Code
+       
         autofillField(profile.postal_code || "", [
             'input[aria-label*="Postal Code"]',
             'input[placeholder*="Postal Code"]',
             'input[name*="postal"]',
             'input[name*="zip"]'
         ]);
-        // Phone Number
+       
         autofillField(profile.phone_number || "", [
             'input[aria-label*="Phone Number"]',
             'input[placeholder*="Phone Number"]',

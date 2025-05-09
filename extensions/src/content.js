@@ -79,11 +79,9 @@ function uploadResumeByUrl(fileUrl_1) {
             const response = yield fetch(fileUrl);
             const blob = yield response.blob();
             const file = new File([blob], filename, { type: blob.type });
-            // Use a DataTransfer to simulate file selection
             const dataTransfer = new DataTransfer();
             dataTransfer.items.add(file);
             input.files = dataTransfer.files;
-            // Trigger change event so Workday starts processing it
             input.dispatchEvent(new Event("change", { bubbles: true }));
             console.log(`✅ Uploaded resume "${filename}" from ${fileUrl}`);
         }
@@ -114,7 +112,6 @@ function selectDropdownByQuestion(questionKeyword, answerText) {
         const allButtons = Array.from(document.querySelectorAll('button[aria-haspopup="listbox"]'));
         const clean = (s) => s === null || s === void 0 ? void 0 : s.toLowerCase().replace(/[^\w\s]/g, "").trim();
         for (const button of allButtons) {
-            // Step 1: Walk upward and find question text block
             let container = button;
             let depth = 0;
             let matched = false;
@@ -217,8 +214,7 @@ function autofillTextareaByLabel(labelText, value) {
     yield sleep(400);
     yield selectDropdownByQuestion("Please select veteran status", "I AM NOT A VETERAN");
     autofillDropdownByLabel("hear about", profile.how_heard);
-    // First Name
-    autofillField(profile.first_name || "Revanth", [
+    autofillField(profile.first_name || "", [
         'input[aria-label*="First Name"]',
         'input[placeholder*="First Name"]',
         'input[name*="first"]',
@@ -226,7 +222,6 @@ function autofillTextareaByLabel(labelText, value) {
         'input[placeholder*="Given Name"]',
         'input[name*="given"]'
     ]);
-    // Last Name
     autofillField(profile.last_name || "Mudavath", [
         'input[aria-label*="Last Name"]',
         'input[placeholder*="Last Name"]',
@@ -238,7 +233,6 @@ function autofillTextareaByLabel(labelText, value) {
         'input[placeholder*="Family Name"]',
         'input[name*="family"]'
     ]);
-    // Address Line 1
     autofillField(profile.address_line1 || "", [
         'input[aria-label*="Address Line 1"]',
         'input[placeholder*="Address Line 1"]',
@@ -250,27 +244,24 @@ function autofillTextareaByLabel(labelText, value) {
         'input[placeholder*="State"]',
         'input[name*="state"]'
     ]);
-    // City
     autofillField(profile.city || "", [
         'input[aria-label*="City"]',
         'input[placeholder*="City"]',
         'input[name*="city"]'
     ]);
-    // Postal Code
     autofillField(profile.postal_code || "", [
         'input[aria-label*="Postal Code"]',
         'input[placeholder*="Postal Code"]',
         'input[name*="postal"]',
         'input[name*="zip"]'
     ]);
-    // Phone Number
     autofillField(profile.phone_number || "", [
         'input[aria-label*="Phone Number"]',
         'input[placeholder*="Phone Number"]',
         'input[name*="phone"]',
         'input[name*="mobile"]'
     ]);
-    autofillLinkedInField("https://linkedin.com/in/revanthmudavath");
+    autofillLinkedInField("");
     autofillTextareaByLabel("salary", "30000");
 }))();
 // const testInjectLogg = document.createElement('div');
