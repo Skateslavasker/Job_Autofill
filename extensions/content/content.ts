@@ -257,7 +257,7 @@ function autofillTextareaByLabel(labelText: string, value: string) {
 
            
         // First Name
-        autofillField(profile.first_name || "Revanth", [
+        autofillField(profile.first_name || "", [
             'input[aria-label*="First Name"]',
             'input[placeholder*="First Name"]',
             'input[name*="first"]',
@@ -313,7 +313,7 @@ function autofillTextareaByLabel(labelText: string, value: string) {
             'input[name*="mobile"]'
         ]); 
 
-        autofillLinkedInField("https://linkedin.com/in/revanthmudavath");
+        autofillLinkedInField("");
 
         autofillTextareaByLabel("salary", "30000");
 

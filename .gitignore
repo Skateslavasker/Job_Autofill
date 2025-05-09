@@ -4,3 +4,6 @@ __pycache__/
 *.py[cod]
 node_modules/
 *.log
+.env
+/backendfiles/
+/backend/seed_data.py
