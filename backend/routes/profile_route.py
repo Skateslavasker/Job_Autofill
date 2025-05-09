@@ -1,5 +1,6 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, send_from_directory
 from backend.models import User_Profile, db
+import os 
 
 profile_bp = Blueprint('profile', __name__)
 
@@ -11,3 +12,8 @@ def get_profile():
         return jsonify(user.serialize()), 200
     else:
         return jsonify({"message": "User not found"}), 404
+
+@profile_bp.route('/files/<path:filename>', methods=['GET'])
+def serve_resume(filename):
+    directory = os.path.join(os.path.dirname(__file__), '..', 'files')
+    return send_from_directory(directory, filename)
